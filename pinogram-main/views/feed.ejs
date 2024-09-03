@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed</title>
+  <link rel="stylesheet" href="/stylesheets/feed.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+</head>
+<body>
+  <div class="navbar">
+    <% if (req.isAuthenticated()) { %>
+      <a href="/profile" class="links"><ion-icon name="person-circle-outline"></ion-icon><p><%=user.username%></p></a>
+      <a href="/searchuser" class="links"><ion-icon name="search-outline"></ion-icon><p>Search</p></a>
+      <a href="/logout" class="links"><ion-icon name="log-out-outline"></ion-icon><p>Logout</p></a>
+    <% } else { %>
+      <a href="/login" class="links"><ion-icon name="log-in-outline"></ion-icon><p>Login</p></a>
+    <% } %>
+  </div>
+  <div class="container">
+    <% posts.forEach(post => { %>
+      <div class="card">
+        <div class="image-container">
+          <h3><%=post.user.username%></h3>
+          <img src="/images/uploads/<%= post.image %>" alt="Post Image" />
+          <p class="text-center"><%= post.imageText %></p>
+          <p class="text-center">
+            <% if (post.likes && post.likes.length > 0) { %>
+              <%= post.likes.length %> <%= post.likes.length === 1 ? 'like' : 'likes' %>
+            <% } else { %>
+              0 likes
+            <% } %>
+          </p>
+          <% if (req.isAuthenticated()) { %>
+            <div class="flex">
+              <form action="/like/<%= post._id %>" method="POST">
+                <button class="likebutton" type="submit">
+                  <% if (post.likes.includes(user._id)) { %>
+                    Dislike
+                  <% } else { %>
+                    Like
+                  <% } %>
+                </button>
+              </form>
+            </div>
+          <% } else { %>
+            <a href="/login" class="login-link">Login to like</a>
+          <% } %>
+          <form action="/post/<%=post.id%>" method="get">
+            <input type="submit" value="Read More" class="read-more-btn">
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

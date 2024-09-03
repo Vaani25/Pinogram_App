@@ -1,0 +1,219 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.6;
+  background-color: #f0f2f5;
+  color: #333;
+  overflow-x: hidden;
+  animation: backgroundAnimation 15s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+  0% { background-color: #f0f2f5; }
+  50% { background-color: #e3f2fd; }
+  100% { background-color: #c8e6c9; }
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  background: linear-gradient(135deg, #ff6f61, #de7c9c);
+  color: white;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: navbarAnimation 1s ease-out;
+}
+
+@keyframes navbarAnimation {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.navbar ion-icon {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.links:hover {
+  color: #ffeb3b; /* Bright yellow on hover */
+}
+
+.links p {
+  margin: 0;
+}
+
+/* Post Container Styles */
+.post-container {
+  margin-top: 40px;
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  background: #cccccc5d;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  animation: postAnimation 1s ease-in-out;
+}
+
+@keyframes postAnimation {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.postimage {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #ddd;
+  transition: transform 0.3s;
+}
+
+.postimage:hover {
+  transform: scale(1.05);
+}
+
+.post-content {
+  margin-top: 15px;
+}
+
+.likes {
+  color: #fff;
+  margin: 10px 0;
+}
+
+.likebutton {
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.likebutton:hover {
+  background-color: #388e3c; /* Darker green */
+  transform: scale(1.05);
+}
+
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 22px); /* Adjusted for padding */
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #ff5722; /* Vibrant orange */
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #e64a19; /* Darker orange */
+  transform: scale(1.05);
+}
+
+.comments {
+  width: 80%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.comment {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.newbody{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.comment:hover {
+  transform: scale(1.02);
+}
+
+.comment h4 {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.comment p {
+  margin: 0;
+  color: #666;
+}
+
+#likecomment {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+#likecomment ion-icon {
+  font-size: 20px;
+}
+
+#likecomment p {
+  display: inline;
+  margin-left: 5px;
+}
